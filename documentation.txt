@@ -1,0 +1,149 @@
+CRM Documentation 
+
+Customer Relationship Management Or CRM is an approach that helps businesses improve existing customer relationships and acquire new customers faster. 
+
+CRM is the largest software market in the world and has increasingly proven to be the best virtual asset that companies can invest in. Although some people think of CRM as just a technology, it is so much more than that. CRM is techno+logic=technologic. CRM software is an organization strategy to manage business relationships and integrations with clients and potential clients.
+
+
+CRM is web-based self-hosted online free CRM software. Following are the featured functionality of CRM :
+
+
+#Key- Features 
+⦁	Lead Management System 
+⦁	Opportunity Management System 
+⦁	Files Management System
+⦁	Quote Management System
+⦁	Appointment Management System
+⦁	Expense Management System
+⦁	Email Notification
+⦁	Prodoct Management System
+⦁	Service Management System
+⦁	Customer Management System 
+⦁	Inventory Management System 
+⦁	Report/Invoice Management System 
+⦁	User Management System 
+⦁	Setup Management System 
+⦁	Activity Management System
+⦁	Website Developer REST API's
+
+
+Lead Management System is used by sales people to identify new customers by using information gathered from various sources including direct from leads, sales reps, marketing practitioners, or customer support agents.
+The lead Management System is the tool that the business of today uses to effectively stay in touch with every first-time visitor to their company website. and enables you to attract your leads and identify how best you can cater to their needs before someone else does. You can capture, score, and track your leads using this software for you to stay ahead of the game. The software enables you to transform your leads into sales.
+
+Opportunity Management System : - is a customer who shows interest in your product and services. It’s same as Lead, but only difference is, in lead, you don’t know if they are interested or not, but in opportunity they are interested in your products with some conditions or negotiation.
+Opportunity management is one of the most important parts of CRM; this allows you to control the sales process. It is a powerful platform tied closely to the sales process and framework for any sales force automation design. Opportunity management system creating an ideal path for yourself and your teams. Typically, this software provide a visual interface that manages certain types of data like potential customer, contacts, call logs history, appointment scheduling that will help to assist sales teams.
+
+key features of Opportunity Management System are 
+=> Opportunity Profile Management 
+=> Company Contact Management 
+=> Calls Log Management 
+=> Company Private Notes 
+=> Assign Opportunity to Staff 
+=> Send Opportunity to Costumers 
+=>Send Proposal Quotation Estimates
+
+Appointment Management System :- 
+
+Appointment management system is designed to help online scheduling and appointment for company and customers, send messages to customers either by phone or email. Using this software customers can schedule an online appointment anytime or anywhere. Appointment management system is also known as appointment booking software; this software manages the information of scheduling meetings with customers to provide business services. Appointment scheduling software to help you get organized, save time, and drive revenue. It allow customers to book, reschedule, and cancel appointments.
+key features of Appointment Management System 
+=> Admin or Staff can Create & Send Appointment.
+=> Admin & Staff can Set Appointment Date and Time.
+=> After Appointment  Staff can Update Meeting Outcome.
+=> Email Notification.
+
+Expense Management System : - 
+Expense management systems deployed by a business to process, pay, and audit employee expenses and allows companies to manage and create their expenses effectively. This software simplifies and automates a business expense entry, streamlines expenses, eliminates paper trail, and reduces administrative effort. Expense management software identifies cost saving opportunities, and analyzing expenses.
+Key features 
+=>   Admin or Staff can Add/Edit Expenses.
+=>   Staff Expenses to Different Expense Category.
+=>  Expenses on Particular Customer.
+
+Email Notification : - 
+You can send Appointments, Quotations, and Invoices message to customer email. You can set predefined Email templates under the setup section. it’s very easy to setup email CRM software.
+
+key Features 
+=> Email Notification to Customers.
+=> Easy to Manage.
+
+Prodoct Management System :- 
+
+Prodoct Management to add create edit or delete a poduct.
+You can create and manage products. You can add products and also can manage.
+A product will be auto populated at the time of quotation and invoice creation. In the inventory section.
+
+
+
+Customer Management System 
+A customer management system helps an organization to manage customer service requests and interact with the customers to resolve their support tickets. Support representatives interact with customers and ensure that all valid customer concerns are being dealt with immediately. Customer support is the range of services you offer to help your customers get the most out of your product and to resolve their problems. Customer support includes things like answering customer questions, providing assistance with onboarding, troubleshooting, and upgrading customers to a new product or service.
+
+#Key Features : 
+=> Admin or Staff can Create Helpdesk Ticket.
+=> Customer can Create New Ticket.
+=> Support Executive can Create Ticket or Edit Status.
+=> Q&A 	
+
+
+
+Inventory Management System 
+
+An Inventory management system is the stock management procedure that oversees the monitoring of stocked items, whether those items are company assets, raw materials and supplies, or finished items ready to be sent to vendors or end consumers. Inventory management refers to the process of ordering, storing, and using a businesses inventory. These include the management of raw materials, components, and finished goods, as well as warehousing and processing such items.
+=> Unlimited Products Creation.
+=> Stock Management 
+=> Vendors 
+=> Assign Category
+=> Easy to Manage 
+=> Unlimited Invoice Creation.
+=> HTML/ PDF / Excel  Invoice Creation.
+=> Send Invoice to Customer 
+ 
+
+
+
+Service Management System	
+Service Management to add create edit or delete a service.
+You can create and manage service. You can add service and also can manage.
+A service will be auto populated at the time of requirements.
+what services you provide 
+
+
+
+Report Management System 
+
+ report system are compilations of financial information of a company that are derived from the accounting records. Basically, reports are considered to be equivalent to the financial statements. Accounting report system are a statements that present the financial status of a business, or over a particular time-period. It details the business transactions and operations.
+
+#key Feature 
+=> Invoice Reports in Specific Date Interval.
+=> Leads and Customers Reports.
+=> Auto Calculation 
+
+
+User Management System 
+Admin or Company owner can create multiple staff or users and able to give them limited CRM module or section access. At the time of user or staff creation admin can assign them to role. In roles section admin can create roles and give them modules access like admin can give lead manager to manage lead and lead executive to only add lead, not delete or edit lead. If admin gives user or staff to manage only lead module, not other part of CRM like support helpdesk or invoices, after login authorized staff or user can view only his/her authorized assigned modules. For data security, admin can view all actions like add/edit/delete, done by staff or user in Activities Management section. As CRM is self-hosted, CRM software, admin can create unlimited users or staff and assign them their role.
+
+#Key-Features : - 
+
+=> Role Management System.
+=> Easy to Assign Modules Access.
+=> Staff Login Panel.
+=> Easy to Create Staff and Assign Them Roles.
+
+
+
+Setup Management System 
+
+Setup Management System describes the ability for administrators to manage Company Details, Template, Email Configuration, Country, Department, Group, Expenses Category, Source, Banner. Setup management is very essential because it have all the information about the company,.
+Key Feature : Company Profile Setup 
+
+
+Activity Management System
+
+Activity means an action taken by person. The main objective of developing activity management in CRM  is to secure the data of company and customers. In activity management, PHP CRM is used to administer the activities assigned to employees in an organization. The data in an activity is a very important source of information for all the employees that are relevant for that information. Activities in CRM are used to record  activities.
+
+
+
+
+Website Developer REST API's
+
+you can use api or web services to get leads or information.
+In others word, can use api to send or retrieve data from your CRM Application.
+for example By CRM API, you can gather many sources leads information in one place and able to convert them into customers.
