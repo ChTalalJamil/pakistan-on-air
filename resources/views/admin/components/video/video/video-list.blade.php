@@ -77,19 +77,19 @@ Videos
                     <div class="card-body">
                         <form class="auth-login-form mt-2" action="{{route('search-videos')}}" method="get">
                             <div class="row">
-                                <div class="col col-lg-4">
+                                <div class="col col-lg-3">
                                     <label for="start" class="col-form-label">Start date:</label>
                                     <input class="form-control" type="date" id="start" name="start">
                                 </div>
-                                <div class="col col-lg-4">
+                                <div class="col col-lg-3">
                                     <label class="col-form-label" for="end">End date:</label>
                                     <input class="form-control" type="date" id="end" name="end">
                                 </div>
-                                <div class="col col_lg-2">
-                                    <button style="margin-left: 50%; margin-top: 15%; border: none; color: white; cursor: pointer;" class="button btn btn-primary" type="submit">Search</button>
+                                <div class="col col_lg-3">
+                                    <button style="margin-top: 37px;" class="btn btn-primary" type="submit">Search</button>
                                 </div>
-                                <div class="col col_lg-2">
-                                    <button style="margin-top: 37px; margin-left: 50%;" class="btn btn-success" type="button"> <a style="color: white;" href="/admin/create-video"> Create Video </a></button>
+                                <div class="col col_lg-3">
+                                    <button style="margin-top: 37px;" class="btn btn-success" type="button"> <a style="color: white;" href="/admin/create-video"> Create Video </a></button>
                                 </div>
                             </div>
                         </form>
