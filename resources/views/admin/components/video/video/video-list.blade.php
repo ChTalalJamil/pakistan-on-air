@@ -127,7 +127,7 @@ Videos
 
                                 </td> -->
                                 <td>{{$video->link}}</td>
-                                <td>{{$video->status == 1? "Accepted": "Rejected"}}</td>
+                                <td>{{$video->status }}</td>
                                 <td>{{$video->created_at->format('d-M-Y')}}</td>
                             </tr>
                             @endforeach
