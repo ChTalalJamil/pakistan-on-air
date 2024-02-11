@@ -59,13 +59,14 @@ class VideoCategoryController extends Controller
         $videoCategory = VideoCategory::create($validatedData);
 
 
-        return $this->index();
+        // return $this->index();
+        return view('admin.components.video.category.categories-form');
 
-        return response()->json([
-            'success' => true,
-            'message' => 'Video category created successfully',
-            'data' => $videoCategory,
-        ], 201);
+        // return response()->json([
+        //     'success' => true,
+        //     'message' => 'Video category created successfully',
+        //     'data' => $videoCategory,
+        // ], 201);
     }
 
     /**

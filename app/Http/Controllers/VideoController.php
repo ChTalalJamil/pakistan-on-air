@@ -69,7 +69,14 @@ class VideoController extends Controller
         // Attach categories to the video
         $video->categories()->attach($validatedData['category_id']);
 
-        return  $this->index();
+        $categories =  VideoCategory::select('id', 'name')->get();
+        return view('admin.components.video.video.video-form', compact("categories"));
+
+        // return response()->json([
+        //     'success' => true,
+        //     'message' => 'Video category created successfully',
+        //     'data' => $video,
+        // ], 201);
     }
 
     /**
