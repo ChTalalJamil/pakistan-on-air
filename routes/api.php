@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\api\AdminController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Api\LeadsController;
@@ -19,5 +20,9 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-// Route::get('/all-leads', [LeadsController::class, 'index']);
-// Route::post('/new-lead', [LeadsController::class,'store']);
+
+Route::get('/category/{name}', [AdminController::class, 'getCategoryByName']);
+Route::get('/categories', [AdminController::class, 'getCategories']);
+
+Route::get('/video/{name}', [AdminController::class, 'getVideoByName']);
+Route::get('/videos', [AdminController::class, 'getVideos']);

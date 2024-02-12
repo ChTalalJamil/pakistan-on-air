@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Video;
 use App\Models\VideoCategory;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Str;
 
 class VideoController extends Controller
@@ -17,8 +18,6 @@ class VideoController extends Controller
     public function index()
     {
         $videos = Video::with('categories:id')->get();
-
-        // dd($videos);
 
         return view('admin.components.video.video.video-list', compact(
             'videos'
@@ -45,7 +44,6 @@ class VideoController extends Controller
      */
     public function store(Request $request)
     {
-        // dd($request->all());
 
         $validatedData = $request->validate([
             'name' => 'required|string|max:255',
@@ -69,14 +67,7 @@ class VideoController extends Controller
         // Attach categories to the video
         $video->categories()->attach($validatedData['category_id']);
 
-        $categories =  VideoCategory::select('id', 'name')->get();
-        return view('admin.components.video.video.video-form', compact("categories"));
-
-        // return response()->json([
-        //     'success' => true,
-        //     'message' => 'Video category created successfully',
-        //     'data' => $video,
-        // ], 201);
+        return Redirect::back()->with('success', 'video created successfully!');
     }
 
     /**
@@ -96,9 +87,10 @@ class VideoController extends Controller
      * @param  \App\Models\Video  $video
      * @return \Illuminate\Http\Response
      */
-    public function edit(Video $video)
+    public function edit($uuid)
     {
-        //
+        $video = Video::where('uuid', $uuid)->first();
+        return view('admin.components.video.video.video-form', compact('video'));
     }
 
     /**
@@ -110,7 +102,20 @@ class VideoController extends Controller
      */
     public function update(Request $request, Video $video)
     {
-        //
+
+        $validatedData = $request->validate([
+            'name' => 'required|string|max:255',
+            'link' => 'required|string',
+            'description' => 'nullable|string',
+            'status' => 'nullable|in:active,inactive',
+            'priority' => 'nullable|integer',
+            'category_id' => 'required|exists:video_categories,id',
+        ]);
+
+        $video = Video::findOrFail($request->id);
+        $video->update($validatedData);
+
+        return Redirect::back()->with('success', 'video created successfully!');
     }
 
     /**
@@ -119,8 +124,24 @@ class VideoController extends Controller
      * @param  \App\Models\Video  $video
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Video $video)
+    public function destroy($id)
     {
-        //
+        $video = Video::findOrFail($id);
+        $video->delete();
+
+        return Redirect::back()->with('success', 'video deleted successfully!');
+    }
+
+
+    public function getFilterVideo(Request $request)
+    {
+
+        $data = Video::whereBetween('created_at', [$request->start, $request->end]);
+
+        $videos = $data->get();
+
+        return view('admin.components.video.category.categories-list', compact(
+            'videos'
+        ));
     }
 }

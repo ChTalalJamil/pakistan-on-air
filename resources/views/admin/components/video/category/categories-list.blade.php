@@ -5,7 +5,6 @@ Video Campaigns
 
 @section('header')
 
-<!-- DataTables -->
 <link rel="stylesheet" href="{{asset('plugins/datatables-bs4/css/dataTables.bootstrap4.min.css')}}">
 <link rel="stylesheet" href="{{asset('plugins/datatables-responsive/css/responsive.bootstrap4.min.css')}}">
 <link rel="stylesheet" href="{{asset('plugins/datatables-buttons/css/buttons.bootstrap4.min.css')}}">
@@ -17,15 +16,14 @@ Video Campaigns
             <div class="col-sm-6">
                 <h1 class="m-0"> Category</h1>
             </div>
-            <!-- /.col -->
             <div class="col-sm-6">
                 <ol class="breadcrumb float-sm-right">
                     <li class="breadcrumb-item"><a href="#">Home</a></li>
                     <li class="breadcrumb-item "><a href="/admin/dashboard">Dashboard </a></li>
                 </ol>
-            </div><!-- /.col -->
-        </div><!-- /.row -->
-    </div><!-- /.container-fluid -->
+            </div>
+        </div>
+    </div>
 </div>
 @endsection
 
@@ -53,7 +51,6 @@ Video Campaigns
         @endif
         <div class="row">
             <div class="col-lg-4 col-6">
-                <!-- small box -->
                 <div class="small-box bg-info">
                     <div class="inner">
                         <h3>{{$categories->count()}}
@@ -66,33 +63,6 @@ Video Campaigns
                     </div>
                 </div>
             </div>
-            <!-- <div class="col-lg-4 col-6">
-                <div class="small-box bg-success">
-                    <div class="inner">
-                        <h3>
-                            4
-                        </h3>
-
-                        <p>Accepted</p>
-                    </div>
-                    <div class="icon">
-                        <i class="ion ion-stats-bars"></i>
-                    </div>
-                </div>
-            </div> -->
-            <!-- <div class="col-lg-4 col-6">
-                <div class="small-box bg-warning">
-                    <div class="inner">
-                        <h3>4
-                        </h3>
-
-                        <p>Rejected</p>
-                    </div>
-                    <div class="icon">
-                        <i class="ion ion-person-add"></i>
-                    </div>
-                </div>
-            </div> -->
         </div>
 
         <div class="row">
@@ -114,7 +84,7 @@ Video Campaigns
                                     <label class="col-form-label" for="end">End date:</label>
                                     <input class="form-control" type="date" id="end" name="end">
                                 </div>
-                                <div class="col col_lg-3" >
+                                <div class="col col_lg-3">
                                     <button style="margin-top: 37px;" class="btn btn-primary" type="submit">Search</button>
                                 </div>
                                 <div class="col col_lg-3">
@@ -133,7 +103,6 @@ Video Campaigns
             <div class="card-header">
                 <h3>Category List</h3>
             </div>
-            <!-- /.card-header -->
             <div class="card-body">
 
                 <div class="table-responsive">
@@ -144,6 +113,7 @@ Video Campaigns
                                 <th>description</th>
                                 <th>Status</th>
                                 <th>Created On</th>
+                                <th>Action</th>
 
                             </tr>
                         </thead>
@@ -154,6 +124,13 @@ Video Campaigns
                                 <td>{{$category->description}}</td>
                                 <td>{{$category->status}}</td>
                                 <td>{{$category->created_at->format('d-M-Y')}}</td>
+                                <td>
+                                    <a href="{{
+                                        route('edit.category', ['uuid' => $category->uuid])
+                                    }}">
+                                        <i class="ion ion-edit"></i>
+                                    </a>
+                                </td>
                             </tr>
                             @endforeach
                         </tbody>
@@ -171,7 +148,6 @@ Video Campaigns
 
 @section('script')
 
-<!-- DataTables  & Plugins -->
 <script src="{{asset('plugins/datatables/jquery.dataTables.min.js')}}"></script>
 <script src="{{asset('plugins/datatables-bs4/js/dataTables.bootstrap4.min.js')}}"></script>
 <script src="{{asset('plugins/datatables-responsive/js/dataTables.responsive.min.js')}}"></script>

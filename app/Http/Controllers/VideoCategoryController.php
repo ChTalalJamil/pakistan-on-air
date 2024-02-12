@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\VideoCategory;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Str;
 
 class VideoCategoryController extends Controller
@@ -59,14 +60,7 @@ class VideoCategoryController extends Controller
         $videoCategory = VideoCategory::create($validatedData);
 
 
-        // return $this->index();
-        return view('admin.components.video.category.categories-form');
-
-        // return response()->json([
-        //     'success' => true,
-        //     'message' => 'Video category created successfully',
-        //     'data' => $videoCategory,
-        // ], 201);
+        return Redirect::back()->with('success', 'category created successfully!');
     }
 
     /**
@@ -86,9 +80,11 @@ class VideoCategoryController extends Controller
      * @param  \App\Models\VideoCategory  $videoCategory
      * @return \Illuminate\Http\Response
      */
-    public function edit(VideoCategory $videoCategory)
+    public function edit($uuid)
     {
-        //
+        $videoCategory = VideoCategory::where('uuid', $uuid)->first();
+        // dd($videoCategory);
+        return view('admin.components.video.category.categories-form', compact('videoCategory'));
     }
 
     /**
@@ -98,9 +94,18 @@ class VideoCategoryController extends Controller
      * @param  \App\Models\VideoCategory  $videoCategory
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, VideoCategory $videoCategory)
+    public function update(Request $request)
     {
-        //
+        $validatedData = $request->validate([
+            'name' => 'required|string|max:255',
+            'description' => 'nullable|string',
+            'meta_title' => 'nullable|string|max:255',
+            'meta_description' => 'nullable|string',
+        ]);
+        $videoCategory = VideoCategory::findOrFail($request->id);
+        $videoCategory->update($validatedData);
+
+        return Redirect::back()->with('success', 'category updated successfully!');
     }
 
     /**
@@ -109,9 +114,13 @@ class VideoCategoryController extends Controller
      * @param  \App\Models\VideoCategory  $videoCategory
      * @return \Illuminate\Http\Response
      */
-    public function destroy(VideoCategory $videoCategory)
+    public function destroy($id)
     {
-        //
+
+        $video = VideoCategory::findOrFail($id);
+        $video->delete();
+
+        return Redirect::back()->with('success', 'category deleted successfully!');
     }
 
 
@@ -121,12 +130,6 @@ class VideoCategoryController extends Controller
         $data = VideoCategory::whereBetween('created_at', [$request->start, $request->end]);
 
         $categories = $data->get();
-        // $total_leads = $leads->count();
-        // $accepted = $data->where('status', 1)->get();
-        // $rejected = $data->where('status', 0)->get();
-        // $accepted_lead_count = $accepted->count();
-        // $rejected_lead_count = $rejected->count();
-
 
 
         return view('admin.components.video.category.categories-list', compact(

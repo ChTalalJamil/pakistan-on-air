@@ -17,16 +17,14 @@ Videos
             <div class="col-sm-6">
                 <h1 class="m-0"> Video</h1>
             </div>
-            <!-- /.col -->
             <div class="col-sm-6">
                 <ol class="breadcrumb float-sm-right">
                     <li class="breadcrumb-item"><a href="#">Home</a></li>
                     <li class="breadcrumb-item "><a href="/admin/dashboard">Dashboard </a></li>
                 </ol>
             </div>
-            <!-- /.col -->
-        </div><!-- /.row -->
-    </div><!-- /.container-fluid -->
+        </div>
+    </div>
 </div>
 @endsection
 
@@ -54,7 +52,6 @@ Videos
         @endif
         <div class="row">
             <div class="col-lg-4 col-6">
-                <!-- small box -->
                 <div class="small-box bg-info">
                     <div class="inner">
                         <h3>{{$videos->count()}}</h3>
@@ -102,7 +99,6 @@ Videos
             <div class="card-header">
                 <h3>Video List</h3>
             </div>
-            <!-- /.card-header -->
             <div class="card-body">
 
                 <div class="table-responsive">
@@ -110,25 +106,26 @@ Videos
                         <thead>
                             <tr>
                                 <th>Name</th>
-                                <!-- <th>Category</th> -->
                                 <th>Link</th>
                                 <th>Status</th>
                                 <th>Date</th>
+                                <th>Action</th>
                             </tr>
                         </thead>
                         <tbody>
                             @foreach($videos as $key => $video)
                             <tr>
                                 <td>{{$video->name}}</td>
-                                <!-- <td>
-                                    @foreach($video->categories as $category)
-                                    {{$category->name}}{{ $loop->last ? '' : ', ' }}
-                                    @endforeach
-
-                                </td> -->
                                 <td>{{$video->link}}</td>
                                 <td>{{$video->status }}</td>
                                 <td>{{$video->created_at->format('d-M-Y')}}</td>
+                                <td>
+                                    <a href="{{
+                                        route('edit.video', ['uuid' => $video->uuid])
+                                    }}">
+                                        <i class="ion ion-edit"></i>
+                                    </a>
+                                </td>
                             </tr>
                             @endforeach
                         </tbody>

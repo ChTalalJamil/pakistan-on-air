@@ -70,7 +70,7 @@
                     </a>
                 </li> -->
                 <li class="nav-item">
-                    <a href="/admin/category" class="nav-link">
+                    <a href="{{route('get.categories')}}" class="nav-link">
                         <i class="nav-icon far fa-image"></i>
                         <p>
                             Category
