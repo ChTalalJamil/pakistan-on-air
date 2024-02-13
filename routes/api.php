@@ -25,3 +25,5 @@ Route::get('/categories', [ApiController::class, 'getCategories']);
 
 Route::get('/video/{slug}', [ApiController::class, 'getVideoBySlug']);
 Route::get('/videos', [ApiController::class, 'getVideos']);
+
+Route::get('/get-video/{slug}',[ApiController::class, 'getVideoByCategorySlug'] );

@@ -64,4 +64,9 @@ class ApiController extends Controller
             'data' => $videos
         ]);
     }
+
+    public function getVideoByCategorySlug($slug)
+    {
+        return $slug;    
+    }
 }
