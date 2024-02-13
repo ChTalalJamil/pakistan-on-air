@@ -9,9 +9,9 @@ use Illuminate\Http\Request;
 
 class ApiController extends Controller
 {
-    public function getCategoryByName($name)
+    public function getCategoryBySlug($slug)
     {
-        $category = Category::where('name', $name)->first();
+        $category = Category::where('slug', $slug)->first();
         if (!$category) {
             return response()->json([
                 'success' => false,
@@ -47,9 +47,9 @@ class ApiController extends Controller
         ]);
     }
 
-    public function getVideoByName($name)
+    public function getVideoBySlug($slug)
     {
-        $videos = Video::where('name', $name)->first();
+        $videos = Video::where('slug', $slug)->first();
         if (!$videos) {
             return response()->json([
                 'success' => false,

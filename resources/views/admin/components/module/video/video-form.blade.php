@@ -98,15 +98,16 @@ New Lead
                                 @endforeach
                             </select>
                         </div>
-                        
+
                         <div class="col-12">
                             <p style="margin-bottom: 3%;"></p>
                         </div>
                         <div class="col-6">
-                            <button class="btn btn-dark"><a style="color: white;" href="{{route('get.categories')}}"> Back </a></button>
+                            <button class="btn btn-dark"><a style="color: white;" href="{{route('get.videos')}}"> Back </a></button>
                         </div>
                         <div class="col-6">
-                            <button style="float: right;" class="btn btn-success" type="submit">Update</button>
+                            <button style="float: right;" class="btn btn-success" type="submit">
+                            Update</button>
                         </div>
                 </form>
                 @else
@@ -159,12 +160,16 @@ New Lead
                                 @endforeach
                             </select>
                         </div>
-                        
+
                         <div class="col-12">
                             <p style="margin-bottom: 3%;"></p>
                         </div>
                         <div class="col-6">
-                            <button class="btn btn-dark"><a style="color: white;" href="{{route('get.categories')}}"> Back </a></button>
+                            <a style="color: white;" href="{{route('get.videos')}}">
+                                <button class="btn btn-dark">
+                                    Back
+                                </button>
+                            </a>
                         </div>
                         <div class="col-6">
                             <button style="float: right;" class="btn btn-success" type="submit">Save</button>

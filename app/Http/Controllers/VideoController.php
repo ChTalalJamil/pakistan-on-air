@@ -51,7 +51,7 @@ class VideoController extends Controller
             'description' => 'nullable|string',
             'status' => 'nullable|in:active,inactive',
             'priority' => 'nullable|integer',
-            'category_id' => 'required|exists:video_categories,id',
+            'category_id' => 'required|exists:categories,id',
         ]);
 
         // Create a new video instance
@@ -109,7 +109,7 @@ class VideoController extends Controller
             'description' => 'nullable|string',
             'status' => 'nullable|in:active,inactive',
             'priority' => 'nullable|integer',
-            'category_id' => 'required|exists:video_categories,id',
+            'category_id' => 'required|exists:categories,id',
         ]);
 
         $video = Video::findOrFail($request->id);
