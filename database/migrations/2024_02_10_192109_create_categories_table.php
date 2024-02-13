@@ -13,10 +13,11 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('video_categories', function (Blueprint $table) {
+        Schema::create('categories', function (Blueprint $table) {
             $table->id();
             $table->uuid('uuid')->unique();
             $table->string('name');
+            $table->string('slug')->unique();
             $table->text('description')->nullable();
             $table->string('meta_title')->nullable();
             $table->text('meta_description')->nullable();
@@ -33,6 +34,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('video_categories');
+        Schema::dropIfExists('categories');
     }
 };

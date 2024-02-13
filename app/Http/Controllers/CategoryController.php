@@ -2,12 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\VideoCategory;
+use App\Models\Category;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Str;
 
-class VideoCategoryController extends Controller
+class CategoryController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -16,14 +15,8 @@ class VideoCategoryController extends Controller
      */
     public function index()
     {
-        $categories = VideoCategory::all();
-        // $accepted = Lead::where('status', '=', 1)->get();
-        // $rejected = Lead::where('status', '=', 0)->get();
-
-        return view('admin.components.video.category.categories-list', compact(
-            'categories'
-            // , 'accepted_lead_count', 'rejected_lead_count','total_leads'
-        ));
+        $categories = Category::all();
+        return view('admin.components.module.category.categories-list', compact('categories'));
     }
 
     /**
@@ -33,7 +26,7 @@ class VideoCategoryController extends Controller
      */
     public function create()
     {
-        return view('admin.components.video.category.categories-form');
+        return view('admin.components.module.category.categories-form');
     }
 
     /**
@@ -54,22 +47,18 @@ class VideoCategoryController extends Controller
         ]);
 
         $validatedData['uuid'] = Str::uuid();
-        // $validatedData['uuid'] = $uuid->uuid;
-        // dd($validatedData);
-        // Create a new VideoCategory instance
-        $videoCategory = VideoCategory::create($validatedData);
+        Category::create($validatedData);
 
-
-        return Redirect::back()->with('success', 'category created successfully!');
+        return redirect()->back()->with('success', 'category created successfully!');
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\VideoCategory  $videoCategory
+     * @param  \App\Models\Category  $category
      * @return \Illuminate\Http\Response
      */
-    public function show(VideoCategory $videoCategory)
+    public function show(Category $category)
     {
         //
     }
@@ -77,21 +66,20 @@ class VideoCategoryController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\VideoCategory  $videoCategory
+     * @param  \App\Models\Category  $category
      * @return \Illuminate\Http\Response
      */
     public function edit($uuid)
     {
-        $videoCategory = VideoCategory::where('uuid', $uuid)->first();
-        // dd($videoCategory);
-        return view('admin.components.video.category.categories-form', compact('videoCategory'));
+        $category = Category::where('uuid', $uuid)->first();
+        return view('admin.components.module.category.categories-form', compact('category'));
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\VideoCategory  $videoCategory
+     * @param  \App\Models\Category  $category
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request)
@@ -102,39 +90,35 @@ class VideoCategoryController extends Controller
             'meta_title' => 'nullable|string|max:255',
             'meta_description' => 'nullable|string',
         ]);
-        $videoCategory = VideoCategory::findOrFail($request->id);
-        $videoCategory->update($validatedData);
+        $category = Category::findOrFail($request->id);
+        $category->update($validatedData);
 
-        return Redirect::back()->with('success', 'category updated successfully!');
+        return redirect()->back()->with('success', 'category updated successfully!');
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\VideoCategory  $videoCategory
+     * @param  \App\Models\Category  $category
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)
     {
 
-        $video = VideoCategory::findOrFail($id);
+        $video = Category::findOrFail($id);
         $video->delete();
 
-        return Redirect::back()->with('success', 'category deleted successfully!');
+        return redirect()->back()->with('success', 'category deleted successfully!');
     }
 
 
     public function getFilterCategories(Request $request)
     {
 
-        $data = VideoCategory::whereBetween('created_at', [$request->start, $request->end]);
+        $data = Category::whereBetween('created_at', [$request->start, $request->end]);
 
         $categories = $data->get();
 
-
-        return view('admin.components.video.category.categories-list', compact(
-            'categories'
-            // , 'accepted_lead_count', 'rejected_lead_count', 'total_leads'
-        ));
+        return view('admin.components.module.category.categories-list', compact('categories'));
     }
 }

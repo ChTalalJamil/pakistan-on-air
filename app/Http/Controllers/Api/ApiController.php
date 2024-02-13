@@ -4,14 +4,14 @@ namespace App\Http\Controllers\api;
 
 use App\Http\Controllers\Controller;
 use App\Models\Video;
-use App\Models\VideoCategory;
+use App\Models\Category;
 use Illuminate\Http\Request;
 
-class AdminController extends Controller
+class ApiController extends Controller
 {
     public function getCategoryByName($name)
     {
-        $category = VideoCategory::where('name', $name)->first();
+        $category = Category::where('name', $name)->first();
         if (!$category) {
             return response()->json([
                 'success' => false,
@@ -29,7 +29,7 @@ class AdminController extends Controller
 
     public function getCategories()
     {
-        $categories = VideoCategory::lazy();
+        $categories = Category::lazy();
         return response()->json([
             'success' => true,
             'message' => 'Categories retrieved successfully',

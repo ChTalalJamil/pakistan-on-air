@@ -1,9 +1,8 @@
 <?php
 
-use App\Http\Controllers\api\AdminController;
+use App\Http\Controllers\api\ApiController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\Api\LeadsController;
 
 /*
 |--------------------------------------------------------------------------
@@ -21,8 +20,8 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 });
 
 
-Route::get('/category/{name}', [AdminController::class, 'getCategoryByName']);
-Route::get('/categories', [AdminController::class, 'getCategories']);
+Route::get('/category/{name}', [ApiController::class, 'getCategoryByName']);
+Route::get('/categories', [ApiController::class, 'getCategories']);
 
-Route::get('/video/{name}', [AdminController::class, 'getVideoByName']);
-Route::get('/videos', [AdminController::class, 'getVideos']);
+Route::get('/video/{name}', [ApiController::class, 'getVideoByName']);
+Route::get('/videos', [ApiController::class, 'getVideos']);

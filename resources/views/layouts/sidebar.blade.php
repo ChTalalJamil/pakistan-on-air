@@ -71,7 +71,7 @@
                 </li> -->
                 <li class="nav-item">
                     <a href="{{route('get.categories')}}" class="nav-link">
-                        <i class="nav-icon far fa-image"></i>
+                        <i class="nav-icon ion ion-videocamera"></i>
                         <p>
                             Category
                         </p>
@@ -80,49 +80,12 @@
 
                 <li class="nav-item">
                     <a href="/admin/video" class="nav-link">
-                        <i class="nav-icon fas fa-film"></i>
+                        <i class="nav-icon ion ion-film-marker"></i>
                         <p>
                             Video
                         </p>
                     </a>
                 </li>
-
-                <!-- <li class="nav-item">
-                    <a href="/admin/campaign-list" class="nav-link">
-                        <i class="nav-icon far fa-image"></i>
-                        <p>
-                            Campaign
-                        </p>
-                    </a>
-                </li> -->
-
-                <!-- <li class="nav-item">
-                                <a href="pages/kanban.html" class="nav-link">
-                                <i class="nav-icon fas fa-columns"></i>
-                                <p>
-                                    Kanban Board
-                                </p>
-                                </a>
-                            </li> -->
-                <!-- <li class="nav-item">
-                                    <a href="#" class="nav-link">
-                                        <i class="far fa-circle nav-icon"></i>
-                                        <p>To Do's</p>
-                                    </a>
-                                </li> -->
-
-                <!-- <li class="nav-item">
-                                    <a href="#" class="nav-link">
-                                        <i class="far fa-circle nav-icon"></i>
-                                        <p>Chat</p>
-                                    </a>
-                                </li> -->
-                <!-- <li class="nav-item">
-                                <a href="" class="nav-link">
-                                <i class="nav-icon fas fa-file"></i>
-                                <p>Documentation</p>
-                                </a>
-                            </li> -->
 
             </ul>
 
@@ -131,7 +94,7 @@
             <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
                 <li class="nav-item">
                     <a href="/admin/logout" class="nav-link">
-                        <i class="nav-icon far fa-image"></i>
+                        <i class="nav-icon ion ion-log-out"></i>
                         <p>
                             Logout
                         </p>

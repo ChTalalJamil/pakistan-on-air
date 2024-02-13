@@ -17,6 +17,7 @@ return new class extends Migration
             $table->id();
             $table->uuid('uuid')->unique();
             $table->string('name');
+            $table->string('slug')->unique();
             $table->string('link');
             $table->unsignedBigInteger('category_id')->nullable();
             $table->text('description')->nullable();
@@ -24,7 +25,7 @@ return new class extends Migration
             $table->integer('priority')->default(0);
             $table->timestamps();
 
-            $table->foreign('category_id')->references('id')->on('video_categories')->onDelete('cascade');
+            $table->foreign('category_id')->references('id')->on('categories')->onDelete('cascade');
         });
     }
 

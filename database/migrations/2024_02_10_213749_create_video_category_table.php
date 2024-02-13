@@ -13,14 +13,14 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('video_video_category', function (Blueprint $table) {
+        Schema::create('video_category', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('video_id');
-            $table->unsignedBigInteger('video_category_id');
+            $table->unsignedBigInteger('category_id');
             $table->timestamps();
 
             $table->foreign('video_id')->references('id')->on('videos')->onDelete('cascade');
-            $table->foreign('video_category_id')->references('id')->on('video_categories')->onDelete('cascade');
+            $table->foreign('category_id')->references('id')->on('categories')->onDelete('cascade');
         });
     }
 

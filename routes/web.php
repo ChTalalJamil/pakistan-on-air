@@ -1,10 +1,10 @@
 <?php
 
 use App\Http\Controllers\AdminController;
-use App\Http\Controllers\VideoCategoryController;
+use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\VideoController;
 use App\Models\Admin;
-use App\Models\VideoCategory;
+use App\Models\Category;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -30,13 +30,13 @@ Route::group(['prefix' => 'admin', 'namespace' => 'Admin'], function () {
 
     Route::group(['middleware' => 'auth:admin'], function () {
 
-        Route::get('/categories', [VideoCategoryController::class, 'index'])->name('get.categories');
-        Route::get('/create-category', [VideoCategoryController::class, 'create'])->name('create.category');
-        Route::post('/store-category', [VideoCategoryController::class, 'store'])->name('store.category');
-        Route::get('/edit-category/{uuid}', [VideoCategoryController::class, 'edit'])->name('edit.category');
-        Route::post('/update-category', [VideoCategoryController::class, 'update'])->name('update.category');
+        Route::get('/categories', [CategoryController::class, 'index'])->name('get.categories');
+        Route::get('/create-category', [CategoryController::class, 'create'])->name('create.category');
+        Route::post('/store-category', [CategoryController::class, 'store'])->name('store.category');
+        Route::get('/edit-category/{uuid}', [CategoryController::class, 'edit'])->name('edit.category');
+        Route::post('/update-category', [CategoryController::class, 'update'])->name('update.category');
 
-        Route::get('/filter-categories', [VideoCategoryController::class, 'getFilterCategories'])->name('filter.categories');
+        Route::get('/filter-categories', [CategoryController::class, 'getFilterCategories'])->name('filter.categories');
 
 
         Route::get('/video', [VideoController::class, 'index'])->name('get.videos');
@@ -50,13 +50,12 @@ Route::group(['prefix' => 'admin', 'namespace' => 'Admin'], function () {
         Route::get('/dashboard', [AdminController::class, 'index'])->name('admin.dashboard');
 
 
-        // Route::get('/leads-list', [AdminController::class, 'getLeads']);
-
-        Route::get('/filter-leads', [AdminController::class, 'getFilterLeads'])->name('searchLeads');
-        Route::get('/add-leads', [AdminController::class, 'addLeads']);
-        Route::get('/campaign-list', [AdminController::class, 'getCampaigns']);
-        Route::post('store-campaign', [AdminController::class, 'storeCampaign']);
-        Route::post('/store-lead', [AdminController::class, 'storeLead']);
+        // Route::get('/filter-leads', [AdminController::class, 'getFilterLeads'])->name('searchLeads');
+        // Route::get('/add-leads', [AdminController::class, 'addLeads']);
+        // Route::get('/campaign-list', [AdminController::class, 'getCampaigns']);
+        // Route::post('store-campaign', [AdminController::class, 'storeCampaign']);
+        // Route::post('/store-lead', [AdminController::class, 'storeLead']);
+        
         Route::get('/', [AdminController::class, 'template']);
     });
 });

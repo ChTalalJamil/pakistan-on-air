@@ -1,11 +1,10 @@
 @extends('layouts.master')
 @section('title')
-Videos
+Video Campaigns
 @endsection
 
 @section('header')
 
-<!-- DataTables -->
 <link rel="stylesheet" href="{{asset('plugins/datatables-bs4/css/dataTables.bootstrap4.min.css')}}">
 <link rel="stylesheet" href="{{asset('plugins/datatables-responsive/css/responsive.bootstrap4.min.css')}}">
 <link rel="stylesheet" href="{{asset('plugins/datatables-buttons/css/buttons.bootstrap4.min.css')}}">
@@ -15,7 +14,7 @@ Videos
     <div class="container-fluid">
         <div class="row mb-2">
             <div class="col-sm-6">
-                <h1 class="m-0"> Video</h1>
+                <h1 class="m-0"> Category</h1>
             </div>
             <div class="col-sm-6">
                 <ol class="breadcrumb float-sm-right">
@@ -54,12 +53,13 @@ Videos
             <div class="col-lg-4 col-6">
                 <div class="small-box bg-info">
                     <div class="inner">
-                        <h3>{{$videos->count()}}</h3>
+                        <h3>{{$categories->count()}}
+                        </h3>
 
-                        <p>Total Videos</p>
+                        <p>Total Categories</p>
                     </div>
                     <div class="icon">
-                        <i class="ion ion-bag"></i>
+                        <i class="ion ion-videocamera"></i>
                     </div>
                 </div>
             </div>
@@ -69,16 +69,18 @@ Videos
             <div class="col-lg-12">
                 <div class="card">
                     <div class="card-header">
-                        <h3>Filter </h3>
+                        <h3>Filter Category </h3>
                     </div>
                     <div class="card-body">
-                        <form class="auth-login-form mt-2" action="{{route('search-videos')}}" method="get">
-                            <div class="row">
-                                <div class="col col-lg-3">
+                        <form class="auth-login-form mt-2" action="{{route('filter.categories')}}" method="get">
+                            <div class="row" style="display: flex;">
+                                <div class="col-lg-3">
+
                                     <label for="start" class="col-form-label">Start date:</label>
                                     <input class="form-control" type="date" id="start" name="start">
                                 </div>
                                 <div class="col col-lg-3">
+
                                     <label class="col-form-label" for="end">End date:</label>
                                     <input class="form-control" type="date" id="end" name="end">
                                 </div>
@@ -86,18 +88,20 @@ Videos
                                     <button style="margin-top: 37px;" class="btn btn-primary" type="submit">Search</button>
                                 </div>
                                 <div class="col col_lg-3">
-                                    <button style="margin-top: 37px;" class="btn btn-success" type="button"> <a style="color: white;" href="/admin/create-video"> Create Video </a></button>
+                                    <button style="margin-top: 37px;" class="btn btn-success" type="button"> <a style="color: white;" href="/admin/create-category"> Add Category </a></button>
                                 </div>
                             </div>
                         </form>
+
                     </div>
+
                 </div>
             </div>
         </div>
 
         <div class="card">
             <div class="card-header">
-                <h3>Video List</h3>
+                <h3>Category List</h3>
             </div>
             <div class="card-body">
 
@@ -106,22 +110,23 @@ Videos
                         <thead>
                             <tr>
                                 <th>Name</th>
-                                <th>Link</th>
+                                <th>description</th>
                                 <th>Status</th>
-                                <th>Date</th>
+                                <th>Created On</th>
                                 <th>Action</th>
+
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach($videos as $key => $video)
+                            @foreach($categories as $key => $category)
                             <tr>
-                                <td>{{$video->name}}</td>
-                                <td>{{$video->link}}</td>
-                                <td>{{$video->status }}</td>
-                                <td>{{$video->created_at->format('d-M-Y')}}</td>
+                                <td>{{$category->name}}</td>
+                                <td>{{$category->description}}</td>
+                                <td>{{$category->status}}</td>
+                                <td>{{$category->created_at->format('d-M-Y')}}</td>
                                 <td>
                                     <a href="{{
-                                        route('edit.video', ['uuid' => $video->uuid])
+                                        route('edit.category', ['uuid' => $category->uuid])
                                     }}">
                                         <i class="ion ion-edit"></i>
                                     </a>
@@ -139,9 +144,10 @@ Videos
 </section>
 @endsection
 
+
+
 @section('script')
 
-<!-- DataTables  & Plugins -->
 <script src="{{asset('plugins/datatables/jquery.dataTables.min.js')}}"></script>
 <script src="{{asset('plugins/datatables-bs4/js/dataTables.bootstrap4.min.js')}}"></script>
 <script src="{{asset('plugins/datatables-responsive/js/dataTables.responsive.min.js')}}"></script>

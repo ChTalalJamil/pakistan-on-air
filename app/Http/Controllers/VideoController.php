@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Video;
-use App\Models\VideoCategory;
+use App\Models\Category;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Str;
@@ -19,7 +19,7 @@ class VideoController extends Controller
     {
         $videos = Video::with('categories:id')->get();
 
-        return view('admin.components.video.video.video-list', compact(
+        return view('admin.components.module.video.video-list', compact(
             'videos'
         ));
     }
@@ -32,8 +32,8 @@ class VideoController extends Controller
     public function create()
     {
 
-        $categories =  VideoCategory::select('id', 'name')->get();
-        return view('admin.components.video.video.video-form', compact("categories"));
+        $categories =  Category::select('id', 'name')->get();
+        return view('admin.components.module.video.video-form', compact("categories"));
     }
 
     /**
@@ -90,7 +90,7 @@ class VideoController extends Controller
     public function edit($uuid)
     {
         $video = Video::where('uuid', $uuid)->first();
-        return view('admin.components.video.video.video-form', compact('video'));
+        return view('admin.components.module.video.video-form', compact('video'));
     }
 
     /**
@@ -140,7 +140,7 @@ class VideoController extends Controller
 
         $videos = $data->get();
 
-        return view('admin.components.video.category.categories-list', compact(
+        return view('admin.components.module.category.categories-list', compact(
             'videos'
         ));
     }
