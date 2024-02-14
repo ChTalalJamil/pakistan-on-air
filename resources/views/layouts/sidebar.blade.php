@@ -33,7 +33,7 @@
                 </li>
 
                 <li class="nav-item">
-                    <a href="/admin/video" class="nav-link">
+                    <a href="{{route('get.videos')}}" class="nav-link">
                         <i class="nav-icon ion ion-film-marker"></i>
                         <p>
                             Video
@@ -47,7 +47,7 @@
         <nav style="bottom: 0px;">
             <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
                 <li class="nav-item">
-                    <a href="/admin/logout" class="nav-link">
+                    <a href="{{route('admin.logout')}}" class="nav-link">
                         <i class="nav-icon ion ion-log-out"></i>
                         <p>
                             Logout

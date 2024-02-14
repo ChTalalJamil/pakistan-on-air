@@ -88,7 +88,7 @@ Video Campaigns
                                     <button style="margin-top: 37px;" class="btn btn-primary" type="submit">Search</button>
                                 </div>
                                 <div class="col col_lg-3">
-                                    <button style="margin-top: 37px;" class="btn btn-success" type="button"> <a style="color: white;" href="/admin/create-category"> Add Category </a></button>
+                                    <button style="margin-top: 37px;" class="btn btn-success" type="button"> <a style="color: white;" href="{{route('create.category')}}"> Add Category </a></button>
                                 </div>
                             </div>
                         </form>
