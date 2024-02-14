@@ -9,15 +9,14 @@ Dashboard
             <div class="col-sm-6">
                 <h1 class="m-0"> Dashboard</h1>
             </div>
-            <!-- /.col -->
             <div class="col-sm-6">
                 <ol class="breadcrumb float-sm-right">
                     <li class="breadcrumb-item"><a href="#">Home</a></li>
-                    <li class="breadcrumb-item "><a href="/admin/dashboard">Dashboard </a></li>
+                    <li class="breadcrumb-item "><a href="{{route('admin.dashboard')}}">Dashboard </a></li>
                 </ol>
-            </div><!-- /.col -->
-        </div><!-- /.row -->
-    </div><!-- /.container-fluid -->
+            </div>
+        </div>
+    </div>
 </div>
 @endsection
 
@@ -43,7 +42,6 @@ Dashboard
         @endif
         <div class="row">
             <div class="col-lg-3 col-6">
-                <!-- small box -->
                 <div class="small-box bg-info">
                     <div class="inner">
                         <h3>{{$categories->count()}}</h3>
@@ -51,7 +49,7 @@ Dashboard
                         <p>Total category</p>
                     </div>
                     <div class="icon">
-                        <i class="ion ion-bag"></i>
+                        <i class="ion ion-videocamera"></i>
                     </div>
                 </div>
             </div>
@@ -64,22 +62,10 @@ Dashboard
                         <p>Videos</p>
                     </div>
                     <div class="icon">
-                        <i class="ion ion-stats-bars"></i>
+                        <i class="ion ion ion-film-marker"></i>
                     </div>
                 </div>
             </div>
-            <!-- <div class="col-lg-3 col-6">
-                <div class="small-box bg-warning">
-                    <div class="inner">
-                        <h3>{{$categories->count()}}</h3>
-
-                        <p>Rejected</p>
-                    </div>
-                    <div class="icon">
-                        <i class="ion ion-person-add"></i>
-                    </div>
-                </div>
-            </div> -->
         </div>
 </section>
 @endsection

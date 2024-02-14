@@ -19,4 +19,10 @@ class Category extends Model
             ->generateSlugsFrom('name')
             ->saveSlugsTo('slug');
     }
+
+    public function videos()
+    {
+        return $this->belongsToMany(Video::class);
+    }
+    
 }

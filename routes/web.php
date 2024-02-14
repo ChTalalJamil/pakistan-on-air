@@ -21,12 +21,15 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', [AdminController::class, 'getLogin'])->name('admin.login');
 
 Route::group(['prefix' => 'admin', 'namespace' => 'Admin'], function () {
-    // Route::get('/login', [AdminController::class, 'getLogin'])->name('admin.login');
+
     Route::get('/logout', [AdminController::class, 'adminLogout'])->name('admin.logout');
     Route::post('/login', [AdminController::class, 'postLogin'])->name('adminLoginPost');
 
     Route::group(['middleware' => 'auth:admin'], function () {
 
+        Route::get('/', [AdminController::class, 'template']);
+        Route::get('/dashboard', [AdminController::class, 'index'])->name('admin.dashboard');
+        
         Route::get('/categories', [CategoryController::class, 'index'])->name('get.categories');
         Route::get('/create-category', [CategoryController::class, 'create'])->name('create.category');
         Route::post('/store-category', [CategoryController::class, 'store'])->name('store.category');
@@ -42,8 +45,5 @@ Route::group(['prefix' => 'admin', 'namespace' => 'Admin'], function () {
         Route::get('/edit-video/{uuid}', [VideoController::class, 'edit'])->name('edit.video');
         Route::post('/update-video', [VideoController::class, 'update'])->name('update.video');
         Route::post('/delete-video/{id}', [VideoController::class, 'destroy'])->name('destroy.video');
-
-        Route::get('/dashboard', [AdminController::class, 'index'])->name('admin.dashboard');
-        Route::get('/', [AdminController::class, 'template']);
     });
 });

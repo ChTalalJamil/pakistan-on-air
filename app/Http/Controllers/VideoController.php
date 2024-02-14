@@ -54,7 +54,6 @@ class VideoController extends Controller
             'category_id' => 'required|exists:categories,id',
         ]);
 
-        // Create a new video instance
         $video = Video::create([
             'name' => $validatedData['name'],
             'link' => $validatedData['link'],
@@ -64,7 +63,6 @@ class VideoController extends Controller
             'uuid' => Str::uuid(),
         ]);
 
-        // Attach categories to the video
         $video->categories()->attach($validatedData['category_id']);
 
         return Redirect::back()->with('success', 'video created successfully!');
