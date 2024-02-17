@@ -1,8 +1,13 @@
 @extends('layouts.master')
 @section('title')
-New Lead
+Video
 @endsection
 
+@section('header')
+<!-- Select2 -->
+<link rel="stylesheet" href="{{ asset('plugins/select2/css/select2.min.css') }}">
+<link rel="stylesheet" href="{{ asset('plugins/select2-bootstrap4-theme/select2-bootstrap4.min.css') }}">
+@endsection
 @section('content-header')
 <div class="content-header">
     <div class="container-fluid">
@@ -91,10 +96,9 @@ New Lead
 
                         <div class="form-group col-4">
                             <label>categories</label>
-                            <select required class="form-control " name="category_id">
-                                <option disabled="disabled" selected="selected">Select categories</option>
+                            <select class="select2" multiple="multiple" data-placeholder="Select a Category" data-dropdown-css-class="select2-purple" name="category_id[]" style="width: 100%;">
                                 @foreach($categories as $obj)
-                                <option value="{{$obj->id}}">{{$obj->name}}</option>
+                                <option {{ in_array($obj->id, $video->categories->pluck('id')->toArray()) ? 'selected' : '' }} value="{{$obj->id}}">{{$obj->name}}</option>
                                 @endforeach
                             </select>
                         </div>
@@ -107,7 +111,7 @@ New Lead
                         </div>
                         <div class="col-6">
                             <button style="float: right;" class="btn btn-success" type="submit">
-                            Update</button>
+                                Update</button>
                         </div>
                 </form>
                 @else
@@ -153,14 +157,12 @@ New Lead
 
                         <div class="form-group col-4">
                             <label>categories</label>
-                            <select required class="form-control " name="category_id">
-                                <option disabled="disabled" selected="selected">Select categories</option>
+                            <select class="select2" multiple="multiple" data-placeholder="Select a Category" data-dropdown-css-class="select2-purple" name="category_id[]" style="width: 100%;">
                                 @foreach($categories as $obj)
                                 <option value="{{$obj->id}}">{{$obj->name}}</option>
                                 @endforeach
                             </select>
                         </div>
-
                         <div class="col-12">
                             <p style="margin-bottom: 3%;"></p>
                         </div>
@@ -188,7 +190,14 @@ New Lead
 
 @section('script')
 
-<script>
+<!-- Select2 -->
 
+<script src="{{ asset('plugins/select2/js/select2.full.min.js') }}"></script>
+<script>
+    $(function() {
+
+        $('.select2').select2();
+        console.log("Hi");
+    });
 </script>
 @endsection

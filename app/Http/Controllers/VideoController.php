@@ -17,7 +17,7 @@ class VideoController extends Controller
      */
     public function index()
     {
-        $videos = Video::with('categories:id')->get();
+        $videos = Video::with('categories:name')->get();
 
         return view('admin.components.module.video.video-list', compact(
             'videos'
@@ -31,7 +31,6 @@ class VideoController extends Controller
      */
     public function create()
     {
-
         $categories =  Category::select('id', 'name')->get();
         return view('admin.components.module.video.video-form', compact("categories"));
     }
@@ -63,7 +62,9 @@ class VideoController extends Controller
             'uuid' => Str::uuid(),
         ]);
 
-        $video->categories()->attach($validatedData['category_id']);
+        foreach ($validatedData['category_id'] as $categoryId) {
+            $video->categories()->attach($categoryId);
+        }
 
         return Redirect::back()->with('success', 'video created successfully!');
     }
@@ -87,8 +88,11 @@ class VideoController extends Controller
      */
     public function edit($uuid)
     {
-        $video = Video::where('uuid', $uuid)->first();
-        return view('admin.components.module.video.video-form', compact('video'));
+        $video = Video::where('uuid', $uuid)->with('categories')->first();
+
+        $categories =  Category::select('id', 'name')->get();
+
+        return view('admin.components.module.video.video-form', compact('video', 'categories'));
     }
 
     /**
@@ -113,7 +117,10 @@ class VideoController extends Controller
         $video = Video::findOrFail($request->id);
         $video->update($validatedData);
 
-        return Redirect::back()->with('success', 'video created successfully!');
+
+        $video->categories()->sync($validatedData['category_id']);
+
+        return Redirect::back()->with('success', 'video updated successfully!');
     }
 
     /**
@@ -126,6 +133,7 @@ class VideoController extends Controller
     {
         $video = Video::findOrFail($id);
         $video->delete();
+        
 
         return Redirect::back()->with('success', 'video deleted successfully!');
     }

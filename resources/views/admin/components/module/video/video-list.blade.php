@@ -107,6 +107,7 @@ Videos
                                 <th>Name</th>
                                 <th>Link</th>
                                 <th>Status</th>
+                                <th>Category</th>
                                 <th>Date</th>
                                 <th>Action</th>
                             </tr>
@@ -117,6 +118,11 @@ Videos
                                 <td>{{ $video->name }}</td>
                                 <td>{{ $video->link }}</td>
                                 <td>{{ $video->status }}</td>
+                                <td>
+                                    @foreach ($video->categories as $category)
+                                    {{ $category->name }}@if (!$loop->last), @endif
+                                    @endforeach
+                                </td>
                                 <td>{{ $video->created_at->format('d-M-Y') }}</td>
                                 <td>
                                     <div style="display: flex;">
@@ -129,7 +135,7 @@ Videos
                                             </button>
                                         </div>
                                         <div>
-                                            <form action="{{route('update.video')}}" method="post">
+                                            <form action="{{route('destroy.video' , ['id'=> $video->id] )}}" method="post">
                                                 @csrf
                                                 <button class="btn" type="submit">
                                                     <a style="color: red" href="{{ route('destroy.video', ['id' => $video->id]) }}">
