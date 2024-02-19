@@ -34,7 +34,7 @@ Route::group(['middleware' => 'auth:admin'], function () {
     Route::post('/store-category', [CategoryController::class, 'store'])->name('store.category');
     Route::get('/edit-category/{uuid}', [CategoryController::class, 'edit'])->name('edit.category');
     Route::post('/update-category', [CategoryController::class, 'update'])->name('update.category');
-    Route::post('/delete-category', [CategoryController::class, 'destroy'])->name('destroy.category');
+    Route::post('/delete-category/{id}', [CategoryController::class, 'destroy'])->name('destroy.category');
     Route::get('/filter-categories', [CategoryController::class, 'getFilterCategories'])->name('filter.categories');
 
     Route::get('/video', [VideoController::class, 'index'])->name('get.videos');

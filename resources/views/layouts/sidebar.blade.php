@@ -1,21 +1,23 @@
 <aside class="main-sidebar sidebar-dark-primary elevation-4">
     <!-- Brand Logo -->
     <a href="#" class="brand-link">
-        <!-- <img src="{{asset('dist/img/AdminLTELogo.png')}}" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8"> -->
-        <span class="brand-text font-weight-light">{{env('APP_NAME')}}</span>
+        <img src="{{ asset('dist/img/logo.png') }}" alt="AdminLTE Logo" class="brand-image img-circle elevation-3"
+            style="opacity: .8">
+        <span class="brand-text font-weight-light">{{ env('APP_NAME') }}</span>
     </a>
 
     <div class="sidebar">
         <div class="user-panel mt-3 pb-3 mb-3 d-flex">
             <div class="image">
-                <!-- <img src="{{asset('dist/img/user2-160x160.jpg')}}" class="img-circle elevation-2" alt="User Image"> -->
+                <img src="{{ asset('dist/img/avatar5.png') }}" class="img-circle elevation-2" alt="User Image">
             </div>
-            <div style="color: #fff;" class="info">{{Auth::user()->name}}</div>
+            <div style="color: #fff;" class="info">{{ Auth::user()->name }}</div>
         </div>
         <nav class="mt-2">
-            <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
+            <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu"
+                data-accordion="false">
                 <li class="nav-item">
-                    <a href="{{route('admin.dashboard')}}" class="nav-link">
+                    <a href="{{ route('admin.dashboard') }}" class="nav-link">
                         <i class="nav-icon fas fa-desktop"></i>
                         <p>
                             Dashboard
@@ -24,7 +26,7 @@
                 </li>
                 <li class="nav-header">Modules</li>
                 <li class="nav-item">
-                    <a href="{{route('get.categories')}}" class="nav-link">
+                    <a href="{{ route('get.categories') }}" class="nav-link">
                         <i class="nav-icon ion ion-videocamera"></i>
                         <p>
                             Category
@@ -33,7 +35,7 @@
                 </li>
 
                 <li class="nav-item">
-                    <a href="{{route('get.videos')}}" class="nav-link">
+                    <a href="{{ route('get.videos') }}" class="nav-link">
                         <i class="nav-icon ion ion-film-marker"></i>
                         <p>
                             Video
@@ -45,9 +47,10 @@
 
         </nav>
         <nav style="bottom: 0px;">
-            <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
+            <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu"
+                data-accordion="false">
                 <li class="nav-item">
-                    <a href="{{route('admin.logout')}}" class="nav-link">
+                    <a href="{{ route('admin.logout') }}" class="nav-link">
                         <i class="nav-icon ion ion-log-out"></i>
                         <p>
                             Logout

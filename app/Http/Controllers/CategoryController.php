@@ -49,7 +49,7 @@ class CategoryController extends Controller
         $validatedData['uuid'] = Str::uuid();
         Category::create($validatedData);
 
-        return redirect()->back()->with('success', 'category created successfully!');
+        return redirect()->back()->with('success', 'Category created successfully!');
     }
 
     /**
@@ -93,7 +93,7 @@ class CategoryController extends Controller
         $category = Category::findOrFail($request->id);
         $category->update($validatedData);
 
-        return redirect()->back()->with('success', 'category updated successfully!');
+        return redirect()->back()->with('success', 'Category updated successfully!');
     }
 
     /**
@@ -104,11 +104,11 @@ class CategoryController extends Controller
      */
     public function destroy($id)
     {
+        $category = Category::findOrFail($id);
 
-        $video = Category::findOrFail($id);
-        $video->delete();
+        $category->delete();
 
-        return redirect()->back()->with('success', 'category deleted successfully!');
+        return redirect()->back()->with('success', 'Category deleted successfully!');
     }
 
 
