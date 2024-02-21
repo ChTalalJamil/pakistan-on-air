@@ -40,7 +40,16 @@ class ApiController extends Controller
 
     public function getVideos()
     {
-        $videos = Video::with('categories:id')->lazy();
+        $videos = Video::with(['categories' => function ($query) {
+            $query->select('name as category_name');
+        }])
+            ->lazy()
+            // ->each(function ($video) {
+            //     $video->category = $video->categories->pluck('category_name');
+            //     unset($video->categories);
+            // })
+        ;
+
         return response()->json([
             'success' => true,
             'message' => 'Videos retrieved successfully',
@@ -68,25 +77,12 @@ class ApiController extends Controller
 
     public function getVideoByCategorySlug($slug)
     {
-        // $category = Category::where('slug', $slug)->first();
-
-        // $video_ids = DB::table('category_video')->where('category_id', $category->id)->select('video_id')->get();
-
-        // $videos = [];
-        // foreach ($video_ids as $video) {
-
-        //     $videos += Video::where('id', $video->video_id)->get();
-        // }
-
-        // return $videos;
         $category = Category::where('slug', $slug)->with('videos')->first();
 
         if (!$category) {
-            // Handle the case where the category is not found
             return response()->json(['error' => 'Category not found'], 404);
         }
 
-        // Return the videos associated with the category
         return response()->json($category->videos);
     }
 }
