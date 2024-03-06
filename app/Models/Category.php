@@ -22,7 +22,6 @@ class Category extends Model
 
     public function videos()
     {
-        return $this->belongsToMany(Video::class);
+        return $this->belongsToMany(Video::class, 'category_video');
     }
-    
 }

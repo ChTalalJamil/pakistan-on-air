@@ -77,12 +77,31 @@ class ApiController extends Controller
 
     public function getVideoByCategorySlug($slug)
     {
-        $category = Category::where('slug', $slug)->with('videos')->first();
+        $category = Category::where('slug', $slug)->first();
 
         if (!$category) {
-            return response()->json(['error' => 'Category not found'], 404);
+            return response()->json([
+                'data' => null,
+                'message' => 'Category slug did not matched',
+                'success' => false
+            ], 404);
         }
 
-        return response()->json($category->videos);
+        $videos = Video::whereHas('categories', function ($query) use ($category) {
+            $query->where('categories.id', $category->id);
+        })->with('categories')->get();
+
+        $videos->each(function ($video) {
+            $video->categories->transform(function ($category) {
+                unset($category->description, $category->meta_title, $category->meta_description, $category->priority, $category->status, $category->created_at, $category->updated_at, $category->pivot);
+                return $category;
+            });
+        });
+
+        return response()->json([
+            'data' => ['videos' => $videos],
+            'message' => 'Videos retrieved successfully against this category slug',
+            'success' => true
+        ], 200);
     }
 }
