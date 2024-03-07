@@ -40,15 +40,13 @@ class ApiController extends Controller
 
     public function getVideos()
     {
-        $videos = Video::with(['categories' => function ($query) {
-            $query->select('name as category_name');
-        }])
-            ->lazy()
-            // ->each(function ($video) {
-            //     $video->category = $video->categories->pluck('category_name');
-            //     unset($video->categories);
-            // })
-        ;
+        $videos = Video::with('categories')->get();
+        $videos->each(function ($video) {
+            $video->categories->transform(function ($category) {
+                unset($category->description, $category->meta_title, $category->meta_description, $category->priority, $category->status, $category->created_at, $category->updated_at, $category->pivot);
+                return $category;
+            });
+        });
 
         return response()->json([
             'success' => true,
