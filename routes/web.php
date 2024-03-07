@@ -22,8 +22,8 @@ Route::get('/', [AdminController::class, 'getLogin'])->name('admin.login');
 
 Route::get('/logout', [AdminController::class, 'adminLogout'])->name('admin.logout');
 Route::post('/login', [AdminController::class, 'postLogin'])->name('adminLoginPost');
-
-// Route::get('/', [AdminController::class, 'template']);
+Route::view('/privacy-policy', 'template.policy');
+Route::view('/terms-and-conditions', 'template.terms-and-conditions');
 
 Route::group(['middleware' => 'auth:admin'], function () {
 
