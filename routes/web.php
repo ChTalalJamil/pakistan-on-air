@@ -2,7 +2,10 @@
 
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\PrivacyPolicyController;
+use App\Http\Controllers\TermsController;
 use App\Http\Controllers\VideoController;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -28,6 +31,8 @@ Route::view('/terms-and-conditions', 'template.terms-and-conditions');
 Route::group(['middleware' => 'auth:admin'], function () {
 
     Route::get('/dashboard', [AdminController::class, 'index'])->name('admin.dashboard');
+    Route::get('/terms', [TermsController::class, 'index'])->name('get.terms');
+    Route::get('/privacy-policy', [PrivacyPolicyController::class, 'index'])->name('get.policies');
 
     Route::get('/categories', [CategoryController::class, 'index'])->name('get.categories');
     Route::get('/create-category', [CategoryController::class, 'create'])->name('create.category');

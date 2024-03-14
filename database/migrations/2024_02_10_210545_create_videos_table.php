@@ -22,7 +22,10 @@ return new class extends Migration
             $table->text('description')->nullable();
             $table->enum('status', ['active', 'inactive'])->default('active');
             $table->integer('priority')->default(0);
+            $table->unsignedBigInteger('admin_id');
             $table->timestamps();
+
+            $table->foreign('admin_id')->references('id')->on('admins');
         });
     }
 
