@@ -14,7 +14,9 @@ class TermsController extends Controller
      */
     public function index()
     {
-        //
+        $terms = Terms::all();
+
+        return view('master.terms.terms-list', compact('terms'));
     }
 
     /**
@@ -24,7 +26,7 @@ class TermsController extends Controller
      */
     public function create()
     {
-        //
+        return view('master.terms.term-form');
     }
 
     /**

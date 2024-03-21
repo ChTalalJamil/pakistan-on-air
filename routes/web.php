@@ -31,7 +31,19 @@ Route::view('/terms-and-conditions', 'template.terms-and-conditions');
 Route::group(['middleware' => 'auth:admin'], function () {
 
     Route::get('/dashboard', [AdminController::class, 'index'])->name('admin.dashboard');
+
     Route::get('/terms', [TermsController::class, 'index'])->name('get.terms');
+    Route::get('/create-terms-and-conditions', [TermsController::class, 'create'])->name('create.terms');
+    Route::post('/store-terms-and-conditions', [TermsController::class, 'store'])->name('store.terms');
+    Route::get('/edit-term/{uuid}', [TermsController::class, 'edit'])->name('edit.term');
+    Route::post('/update-term', [TermsController::class, 'update'])->name('update.term');
+    Route::post('/delete-term/{id}', [TermsController::class, 'destroy'])->name('destroy.term');
+    Route::get('/filter-terms', [TermsController::class, 'getFilterTerms'])->name('filter.terms');
+
+
+
+
+
     Route::get('/privacy-policy', [PrivacyPolicyController::class, 'index'])->name('get.policies');
 
     Route::get('/categories', [CategoryController::class, 'index'])->name('get.categories');

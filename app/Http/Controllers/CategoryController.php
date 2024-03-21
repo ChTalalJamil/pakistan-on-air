@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Category;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
+use Illuminate\Http\Response;
 
 class CategoryController extends Controller
 {
@@ -37,7 +38,7 @@ class CategoryController extends Controller
      */
     public function store(Request $request)
     {
-        $validatedData = $request->validate([
+        $request->validate([
             'name' => 'required|string|max:255',
             'description' => 'nullable|string',
             'meta_title' => 'nullable|string|max:255',
@@ -45,9 +46,8 @@ class CategoryController extends Controller
             'priority' => 'nullable|integer',
             'status' => 'nullable|in:active,inactive',
         ]);
-
-        $validatedData['uuid'] = Str::uuid();
-        Category::create($validatedData);
+    
+        Category::create(array_merge($request->all(), ['uuid' => Str::uuid()]));
 
         return redirect()->back()->with('success', 'Category created successfully!');
     }
@@ -90,8 +90,8 @@ class CategoryController extends Controller
             'meta_title' => 'nullable|string|max:255',
             'meta_description' => 'nullable|string',
         ]);
-        $category = Category::findOrFail($request->id);
-        $category->update($validatedData);
+        
+        Category::findOrFail($request->id)->update($validatedData);
 
         return redirect()->back()->with('success', 'Category updated successfully!');
     }

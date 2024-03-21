@@ -16,8 +16,9 @@ return new class extends Migration
         Schema::create('privacy_policies', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('admin_id');
+            $table->string('heading')->nullable();
+            $table->json('body')->nullable();
             $table->timestamps();
-
             $table->foreign('admin_id')->references('id')->on('admins');
         });
     }

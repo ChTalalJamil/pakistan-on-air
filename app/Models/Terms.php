@@ -8,4 +8,8 @@ use Illuminate\Database\Eloquent\Model;
 class Terms extends Model
 {
     use HasFactory;
+
+    protected $fillable = [
+        'admin_id', 'heading', 'body'
+    ];
 }
